@@ -1,13 +1,22 @@
 <!doctype html>
 
-<html lang="sk">
+<html ng-app="App">
 <head>
   <meta charset="utf-8">
+  <script src="js/angular.min.js"></script>
+  <script src="js/app.js"></script>
 
   <title>Best Price</title>
 </head>
 
-<body>
-Hello Best Price
+<body ng-controller="Controller">
+
+  <ul>
+    <li ng-repeat="g in greetings">
+      <span>{{g.name}}</span>
+      <p>{{g.text}}</p>
+    </li>
+  </ul>
+
 </body>
 </html>
