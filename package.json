@@ -1,0 +1,20 @@
+{
+  "name": "frontend",
+  "version": "0.0.0",
+  "description": "BestPrice frontend",
+  "engines": {
+    "node": "5.9.1"
+  },
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "bower": "1.7.1",
+    "express": "4.13.3"
+  },
+ "repository": {
+   "type": "git",
+   "url": "https://github.com/BestPrice/frontend"
+ }
+}
