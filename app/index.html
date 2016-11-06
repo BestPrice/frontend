@@ -3,20 +3,107 @@
 <html ng-app="App">
 <head>
   <meta charset="utf-8">
-  <script src="js/angular.min.js"></script>
-  <script src="js/app.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <link href="css/bootstrap.css" rel="stylesheet">
+    
+    <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+    
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/angular.min.js"></script>
+    <script src="js/app.js"></script>
 
   <title>Best Price</title>
 </head>
 
 <body ng-controller="Controller">
-
-  <ul>
-    <li ng-repeat="g in greetings">
-      <span>{{g.name}}</span>
-      <p>{{g.text}}</p>
-    </li>
-  </ul>
-	<h1>Vitaj!</h1>
+    
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <div class="collapse navbar-collapse" id="myNavbar1">
+          
+            <ul class="nav navbar-nav">
+            <li>
+                <div class="dropdown">
+                    <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                        Filter kategórií
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">nieco1</a></li>
+                        <li><a href="#">nieco2</a></li>
+                        <li><a href="#">nieco3</a></li>
+                    </ul>
+                </div>
+            </li>
+          </ul>
+            
+          <ul class="nav navbar-nav navbar-right">
+            <li><button class="btn btn-primary" href="#">Nastavenia</button> </li>
+            <li><button class="btn btn-primary" href="#">Košík</button>
+            </li>
+          </ul>
+            
+        </div>
+          
+        <div class="collapse navbar-collapse" id="myNavbar2">
+          <ul class="nav navbar-nav">
+              <div class="web_search">
+                  <form>
+                <input type="text" class="form-control-text" id="usr">
+                
+                <input type="submit" value=" " />
+                      </form>
+              </div>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#"> Login</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    
+    <div style="position: relative; min-height: 60px; vertical-align: top;">
+    <table cellspacing="0" cellpadding="0" border="0" width="100%" height="100%" margin= "25px 0 0 25px">
+     <tr>
+      <td>
+       <table cellspacing="0" cellpadding="1" border="1" width="100%" height="100%">
+         <tr style="color:white;background-color:grey">
+            <th>Header 1</th>
+            <th>Header 2</th>
+         </tr>
+       </table>
+      </td>
+     </tr>
+    <tr>
+    <td>
+       <div style="width:100%; height:60px; overflow:auto;">
+         <table cellspacing="0" cellpadding="1" border="1" width="100%">
+           <tr>
+             <td>new item</td>
+             <td>new item</td>
+           </tr>
+           <tr>
+             <td>new item</td>
+             <td>new item</td>
+           </tr>
+              <tr>
+             <td>new item</td>
+             <td>new item</td>
+           </tr>
+              <tr>
+             <td>new item</td>
+             <td>new item</td>
+           </tr>   
+         </table>  
+       </div>
+      </td>
+     </tr>
+    </table>
+    </div>
+    <div style="position: absolute; bottom: 0px;">
+            Notice
+        </div>
 </body>
 </html>

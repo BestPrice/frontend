@@ -1,0 +1,36 @@
+.navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+    }
+        
+    .btn-primary {
+        margin-left: 3px;
+        margin-right: 3px;
+        margin-top: 5px;
+        margin-bottom: 3px;
+    }
+.web_search input[type="text"]{
+	font-family: 'Maven Pro', sans-serif;
+	padding: 5px 8px;
+	outline: none;
+	border: none;
+	width: 80%;
+	font-size: 1em;
+	color: #333333;
+}
+.web_search:hover input[type="submit"]{
+	background: url(../images/search.png) no-repeat 0px 4px;
+}
+.web_search input[type="submit"]{
+	background: url(../images/search.png) no-repeat 0px 4px;
+	border: none;
+	width: 25px;
+	height: 25px;
+	cursor: pointer;
+}
+.web_search input[type="submit"]:hover{
+	background: url(../images/search.png) no-repeat 0px 4px;
+}
+.form-control-text{
+    border-radius: 5px
+}
