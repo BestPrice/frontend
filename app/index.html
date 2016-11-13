@@ -30,11 +30,11 @@
                         Filter kategórií
                         <span class="caret"></span>
                     </button>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">POZOR</a></li>
-                        <li><a href="#">NA</a></li>
-                        <li><a href="#">MNA</a></li>
-                    </ul>
+					<ul class="dropdown-menu">
+						<li ng-repeat="x in states" value="{{x.ID}}">
+						<a href="#">{{x.Name}}</a></li>
+					</ul>
+                   
                 </div>
             </li>
           </ul>
