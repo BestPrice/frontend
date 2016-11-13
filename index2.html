@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html ng-app="App" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="app2.js"></script>
+    <title>Porovnavanie cien</title>
+</head>
+<body>
+<div ng-controller="statecontroler">
+    <select name="filter" ng-model="filter">
+        <option ng-repeat="x in states" value="{{x.id}}">{{x.name}}</option>
+    </select>
+</div>
+
+</body>
+</html>

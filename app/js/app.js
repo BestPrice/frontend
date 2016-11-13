@@ -1,17 +1,5 @@
-var App = angular.module('App', []);
+        var app=angular.module('droplist',[]);
+        app.controller('statecontroler',['$scope','$http', function ($scope,$http) {
+            $http.get("https://jsonplaceholder.typicode.com/users").success(function(response){$scope.states=response;});
+            }]);
 
-// Define the `PhoneListController` controller on the `phonecatApp` module
-App.controller('Controller', function Controller($scope) {
-  $scope.greetings = [
-    {
-      name: 'Greeting 1',
-      text: 'Lorem ipsum ... 1'
-    }, {
-      name: 'Greeting 2',
-      text: 'Lorem ipsum ... 2'
-    }, {
-      name: 'Greeting 3',
-      text: 'Lorem ipsum ... 3'
-    }
-  ];
-});
