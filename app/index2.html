@@ -7,11 +7,22 @@
     <title>Porovnavanie cien</title>
 </head>
 <body>
-<div ng-controller="statecontroler">
+<div ng-controller="filterKat">
     <select name="filter" ng-model="filter">
-        <option ng-repeat="x in states" value="{{x.id}}">{{x.name}}</option>
+        <option ng-repeat="x in states" value="{{x.ID}}">{{x.Name}}</option>
     </select>
 </div>
 
+
+    <div ng-controller="obchody">
+    <span ng-repeat="category in states2">
+      <label class="checkbox" for="{{category.ID}}">
+        <input type="checkbox" ng-model="selection.ids[category.ID]" name="group" id="{{category.ID}}" />
+        {{category.Name}}
+      </label><br>
+    </span>
+    </div>
+
 </body>
 </html>
+
