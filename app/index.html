@@ -72,16 +72,22 @@
     <tr>
       <th></th>
       <th>Produkt</th>
-      <th>hmotnosť v gramoch <span class="glyphicon glyphicon-eur"></span></th>
+      <th>Značka</th>
+      <th>hmotnosť (g)</th>
+      <th>objem (ml)</th>
+      <th>cena(<span class="glyphicon glyphicon-eur"></span>)</th>
 	  <th>Počet</th>
       <th>Kúpiť</th>
     </tr>
   </thead>
   <tbody ng-repeat="products in data">
     <tr>
-      <th scope="row">1</th>
+      <th>{{$index + 1}}</th>
       <td>{{products.name}}</td>
+      <td>{{products.brand.name}}</td>
       <td>{{products.weigth}}</td>
+      <td>{{products.volume}}</td>
+      <td>cena</td>
 	  <td><input type="number" name="quantity" min="0"><br></td>
       <td><button type="button" class="btn btn-primary btn-sm">Pridaj do košíka</button></td>
     </tr>
