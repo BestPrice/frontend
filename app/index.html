@@ -18,7 +18,8 @@
   <title>Best Price</title>
 </head>
 
-<body ng-controller="Controller">
+<body>
+    <div ng-controller="filterKat">
     
     <nav class="navbar navbar-inverse">
       <div class="container-fluid">
@@ -52,9 +53,9 @@
           <ul class="nav navbar-nav">
               <div class="web_search">
                   <form>
-                <input type="text" class="form-control-text" id="usr">
+                <input type="text" class="form-control-text" id="usr" ng-model="keywords" placeholder="Keywords...">
                 
-                <input type="submit" value=" " />
+                <input type="submit" value=" " ng-click="search()"/>
                       </form>
               </div>
           </ul>
@@ -71,31 +72,17 @@
     <tr>
       <th></th>
       <th>Produkt</th>
-      <th>Cena <span class="glyphicon glyphicon-eur"></span></th>
+      <th>hmotnosť v gramoch <span class="glyphicon glyphicon-eur"></span></th>
 	  <th>Počet</th>
       <th>Kúpiť</th>
     </tr>
   </thead>
-  <tbody>
+  <tbody ng-repeat="products in data">
     <tr>
       <th scope="row">1</th>
-      <td>kura</td>
-      <td>5 korun</td>
+      <td>{{products.name}}</td>
+      <td>{{products.weigth}}</td>
 	  <td><input type="number" name="quantity" min="0"><br></td>
-      <td><button type="button" class="btn btn-primary btn-sm">Pridaj do košíka</button></td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>toaletak</td>
-      <td>3eura</td>
-	  <td><input type="number" name="quantity" min="0" ><br></td>
-      <td><button type="button" class="btn btn-primary btn-sm">Pridaj do košíka</button></td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>kroasant</td>
-	  <td>90centy</td>
-	  <td><input type="number" name="quantity" min="0" ><br></td>
       <td><button type="button" class="btn btn-primary btn-sm">Pridaj do košíka</button></td>
     </tr>
   </tbody>
@@ -105,8 +92,7 @@
             Notice
         </div>
 		
-		 
-		 
-		 
+    </div>
+        
 </body>
 </html>
