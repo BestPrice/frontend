@@ -31,6 +31,11 @@ app.controller('filterKat',['$scope','$http', function ($scope,$http) {
             $scope.data=response;
         });
     });
+    
+    $scope.basket = [];
+    
+    $scope.addProduct = function(product){
+        $scope.basket.push(product);
+    }
 
 }]);
-
