@@ -12,12 +12,15 @@
     <script src="js/jquery-3.1.1.min.js"></script>
     <script src="js/bootstrap.js"></script>
     <script src="js/angular.min.js"></script>
-    <script src="js/app.js"></script>
+	<script src="js/ui-bootstrap-tpls-2.2.0.min.js"></script>
+    <script src="app2.js"></script>
 
   <title>Best Price</title>
 </head>
+   
 
-<body ng-controller="Controller">
+<body>
+    <div ng-controller="filterKat">
     
     <nav class="navbar navbar-inverse">
       <div class="container-fluid">
@@ -30,18 +33,21 @@
                         Filter kategórií
                         <span class="caret"></span>
                     </button>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">POZOR</a></li>
-                        <li><a href="#">NA</a></li>
-                        <li><a href="#">MNA</a></li>
-                    </ul>
+					<ul class="dropdown-menu">
+						<li ng-repeat="x in states" value="{{x.id_category}}">
+						<a href="#">{{x.name}}</a></li>
+					</ul>
+                   
                 </div>
             </li>
           </ul>
             
           <ul class="nav navbar-nav navbar-right">
-            <li><button class="btn btn-primary" href="#">Nastavenia</button> </li>
-            <li><button class="btn btn-primary" href="#">Kočík</button>
+            <li><button class="btn btn-primary" href="#" onclick="openNav()">Nastavenia</button> </li>
+            <li><button class="btn btn-primary" href="#" onclick="openNav()">
+                <img src="images/cart1.png" style="width:20px;height:18px;">
+                Košík
+                </button>
             </li>
           </ul>
             
@@ -50,11 +56,11 @@
         <div class="collapse navbar-collapse" id="myNavbar2">
           <ul class="nav navbar-nav">
               <div class="web_search">
-                  <form>
-                <input type="text" class="form-control-text" id="usr">
-                
-                <input type="submit" value=" " />
-                      </form>
+                <form>
+                    <input type="text" class="form-control-text" id="usr" ng-model="keywords" placeholder="Keywords...">
+
+                    <input type="submit" value=" " ng-click="search()"/>
+                </form>
               </div>
           </ul>
           <ul class="nav navbar-nav navbar-right">
@@ -65,45 +71,65 @@
     </nav>
     
     <div style="position: relative; min-height: 60px; vertical-align: top;">
-    <table cellspacing="0" cellpadding="0" border="0" width="100%" height="100%" margin= "25px 0 0 25px">
-     <tr>
-      <td>
-       <table cellspacing="0" cellpadding="1" border="1" width="100%" height="100%">
-         <tr style="color:white;background-color:grey">
-            <th>Header 1</th>
-            <th>Header 2</th>
-         </tr>
-       </table>
-      </td>
-     </tr>
+    <table class="table table-hover">
+  <thead>
     <tr>
-    <td>
-       <div style="width:100%; height:60px; overflow:auto;">
-         <table cellspacing="0" cellpadding="1" border="1" width="100%">
-           <tr>
-             <td>new item</td>
-             <td>new item</td>
-           </tr>
-           <tr>
-             <td>new item</td>
-             <td>new item</td>
-           </tr>
-              <tr>
-             <td>new item</td>
-             <td>new item</td>
-           </tr>
-              <tr>
-             <td>new item</td>
-             <td>new item</td>
-           </tr>   
-         </table>  
-       </div>
-      </td>
-     </tr>
-    </table>
+      <th></th>
+      <th>Produkt</th>
+      <th>Značka</th>
+      <th>hmotnosť (g)</th>
+      <th>objem (ml)</th>
+      <th>cena(<span class="glyphicon glyphicon-eur"></span>)</th>
+	  <th>Počet</th>
+      <th>Kúpiť</th>
+    </tr>
+  </thead>
+  <tbody ng-repeat="products in data track by $index">
+    <tr>
+      <th>{{$index + 1}}</th>
+      <td>{{products.name}}</td>
+      <td>{{products.brand.name}}</td>
+      <td>{{products.weigth}}</td>
+      <td>{{products.volume}}</td>
+      <td>cena</td>
+	  <td><input type="number" name="quantity" ng-model="quantity" min="1"><br></td>
+      <td><button type="button" class="btn btn-primary btn-sm" ng-click="addProduct(products,quantity)">Pridaj do košíka</button></td>
+    </tr>
+  </tbody>
+</table>
     </div>
-    <div style="position: absolute; bottom: 0px;">
-            Notice
+        
+        <div id="mySidenav" class="sidenav">
+            <a href="javascript:void(0)" class="cartSign"> Products in cart
+            </a>
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;
+            </a>
+        
+            <table>
+                <tbody ng-repeat="products in cart" class="cartTable">
+                    <tr><td></td> <td>Produkt</td><td>Pocet</td></tr>
+
+                        <th>{{$index + 1}}</th>
+                        <td>{{products.name}}</td>
+                        <td>{{counter[$index]}}</td>
+
+                        <td>
+                            <a href="javascript:void(0)" class="closebtn">
+                            </a>
+                        </td>
+                </tbody>
+            </table>
         </div>
+        
+<span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span>
+        
+        
+    <div style="position: absolute; bottom: 0px;">
+    
+            {{cart}}
+        </div>
+		
+    </div>
+        
 </body>
 </html>
