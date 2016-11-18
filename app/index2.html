@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html ng-app="App" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+
+    <script src="app2.js"></script>
+    <title>Porovnavanie cien</title>
+
+  </head>
+<body>
+<div ng-controller="filterKat">
+
+    <form class="well form-search">
+        <label>Search:</label>
+        <input type="text" ng-model="keywords" class="input-medium search-query" placeholder="Keywords...">
+        <button type="submit" class="btn" ng-click="search()">Search</button>
+    </form>
+    <select ng-model="keywords">
+        <option ng-repeat="x in data" value="{{x.ID}}">{{x.Name}}</option>
+    </select>
+
+    {{data}}
+
+    <select name="filter" ng-model="filter">
+        <option ng-repeat="x in states" value="{{x.ID}}">{{x.Name}}</option>
+    </select>
+    {{filter}}
+    <div>
+         <span ng-repeat="category in states2">
+          <label class="checkbox" for="{{category.ID}}">
+            <input type="checkbox" ng-model="obchody[$index]" name="group" id="{{category.ID}}" />
+            {{category.Name}}
+          </label><br>
+        </span>
+    </div>
+</div>
+
+</body>
+</html>
+

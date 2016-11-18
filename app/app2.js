@@ -44,10 +44,10 @@ app.controller('filterKat',['$scope','$http', function ($scope,$http) {
             if ($scope.cart.length > 0){
                 var repeat = false;
                 for(var i = 0; i< $scope.cart.length; i++){
-                    if($scope.cart[i] == product.name){
+                    if($scope.cart[i].name == product.name){
                         repeat = true;
                         $scope.cart[i].count +=1;
-                        $scope.counter[i]=quantity;
+                        $scope.counter[i]+=quantity;
                     }
                 }
                 if (!repeat) {

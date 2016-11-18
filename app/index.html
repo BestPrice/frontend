@@ -106,8 +106,9 @@
             </a>
         
             <table>
-                <tbody ng-repeat="products in cart" class="cartTable">
-                    <tr><td></td> <td>Produkt</td><td>Pocet</td></tr>
+                <tr><td></td> <td>Produkt</td><td>Pocet</td></tr>
+
+                <tbody ng-repeat="products in cart track by $index" class="cartTable">
 
                         <th>{{$index + 1}}</th>
                         <td>{{products.name}}</td>
@@ -116,7 +117,9 @@
                         <td>
                             <a href="javascript:void(0)" class="closebtn">
                             </a>
+
                         </td>
+
                 </tbody>
             </table>
         </div>
