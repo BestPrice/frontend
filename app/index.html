@@ -17,47 +17,7 @@
 
   <title>Best Price</title>
 </head>
-    
-<style>
-    .sidenav {
-    height: 100%;
-    width: 0;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    right: 0;
-    background-color: #111;
-    overflow-x: hidden;
-    transition: 0.5s;
-    padding-top: 60px;
-}
-
-.sidenav a {
-    padding: 8px 8px 8px 32px;
-    text-decoration: none;
-    font-size: 25px;
-    color: #818181;
-    display: block;
-    transition: 0.3s
-}
-
-.sidenav a:hover, .offcanvas a:focus{
-    color: #f1f1f1;
-}
-
-.sidenav .closebtn {
-    position: absolute;
-    top: 0;
-    right: 25px;
-    font-size: 36px;
-    margin-left: 50px;
-}
-
-@media screen and (max-height: 450px) {
-  .sidenav {padding-top: 15px;}
-  .sidenav a {font-size: 18px;}
-}
-</style>
+   
 
 <body>
     <div ng-controller="filterKat">
@@ -84,7 +44,10 @@
             
           <ul class="nav navbar-nav navbar-right">
             <li><button class="btn btn-primary" href="#" onclick="openNav()">Nastavenia</button> </li>
-            <li><button class="btn btn-primary" href="#" onclick="openNav()">Košík</button>
+            <li><button class="btn btn-primary" href="#" onclick="openNav()">
+                <img src="images/cart1.png" style="width:20px;height:18px;">
+                Košík
+                </button>
             </li>
           </ul>
             
@@ -93,11 +56,11 @@
         <div class="collapse navbar-collapse" id="myNavbar2">
           <ul class="nav navbar-nav">
               <div class="web_search">
-                  <form>
-                <input type="text" class="form-control-text" id="usr" ng-model="keywords" placeholder="Keywords...">
-                
-                <input type="submit" value=" " ng-click="search()"/>
-                      </form>
+                <form>
+                    <input type="text" class="form-control-text" id="usr" ng-model="keywords" placeholder="Keywords...">
+
+                    <input type="submit" value=" " ng-click="search()"/>
+                </form>
               </div>
           </ul>
           <ul class="nav navbar-nav navbar-right">
@@ -137,29 +100,31 @@
     </div>
         
         <div id="mySidenav" class="sidenav">
-          <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-          <a href="#">About</a>
-          <a href="#">Services</a>
-          <a href="#">Clients</a>
-          <a href="#">Contact</a>
+            <a href="javascript:void(0)" class="cartSign"> Products in cart
+            </a>
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;
+            </a>
+        
+            <table>
+                <tbody ng-repeat="products in cart" class="cartTable">
+                    <tr>
+                        <th>{{$index + 1}}</th>
+                        <td>{{products}}</td>
+                        <td>
+                            <a href="javascript:void(0)" class="closebtn">
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
         
 <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span>
         
-    <script>
-function openNav() {
-    document.getElementById("mySidenav").style.width = "250px";
-}
-
-function closeNav() {
-    document.getElementById("mySidenav").style.width = "0";
-}
-</script>
-        
         
     <div style="position: absolute; bottom: 0px;">
     
-            {{basket}}
+            {{cart}}
         </div>
 		
     </div>

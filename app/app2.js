@@ -32,10 +32,23 @@ app.controller('filterKat',['$scope','$http', function ($scope,$http) {
         });
     });
     
-    $scope.basket = [];
+    $scope.cart = [];
     
     $scope.addProduct = function(product){
-        $scope.basket.push(product);
+        $scope.cart.push(product);
     }
+    
+    $scope.deleteProduct = function(product){
+        
+    }
+    
 
 }]);
+
+    function openNav() {
+        document.getElementById("mySidenav").style.width = "250px";
+    }
+
+    function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+    }
