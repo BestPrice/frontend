@@ -82,7 +82,14 @@ app.controller('filterKat',['$scope','$http', function ($scope,$http) {
          };
 
     $scope.deleteProduct = function(product){
-        
+        if(product.count > 1){
+           product.count -= 1;
+           var expireDate = new Date();
+           expireDate.setDate(expireDate.getDate() + 1);
+           $cookies.putObject('cart', $scope.cart, {'expires': expireDate});
+           $scope.cart = $cookies.getObject('cart');
+           }
+
     }
     
 
@@ -98,7 +105,7 @@ app.controller('filterKat',['$scope','$http', function ($scope,$http) {
 
 
     function openNav2() {
-        document.getElementById("mySidenav2").style.width = "400px";
+        document.getElementById("mySidenav2").style.width = "600px";
     }
 
     function closeNav2() {
