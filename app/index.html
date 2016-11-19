@@ -2,137 +2,158 @@
 
 <html ng-app="App">
 <head>
-  <meta charset="utf-8">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    
+
     <link href="css/bootstrap.css" rel="stylesheet">
-    
+
     <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
-    
+
     <script src="js/jquery-3.1.1.min.js"></script>
     <script src="js/bootstrap.js"></script>
     <script src="js/angular.min.js"></script>
-	<script src="js/ui-bootstrap-tpls-2.2.0.min.js"></script>
+    <script src="js/ui-bootstrap-tpls-2.2.0.min.js"></script>
     <script src="app2.js"></script>
 
-  <title>Best Price</title>
+    <title>Best Price</title>
 </head>
-   
+
 
 <body>
-    <div ng-controller="filterKat">
-    
+<div ng-controller="filterKat">
+
     <nav class="navbar navbar-inverse">
-      <div class="container-fluid">
-        <div class="collapse navbar-collapse" id="myNavbar1">
-          
-            <ul class="nav navbar-nav">
-            <li>
-                <div class="dropdown">
-                    <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-                        Filter kategórií
-                        <span class="caret"></span>
+        <div class="container-fluid">
+            <div class="collapse navbar-collapse" id="myNavbar1">
+
+                <ul class="nav navbar-nav">
+                    <li>
+                        <div class="dropdown">
+                            <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                                Filter kategórií
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li ng-repeat="x in states" value="{{x.id_category}}">
+                                    <a href="#">{{x.name}}</a></li>
+                            </ul>
+
+                        </div>
+                    </li>
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li><button class="btn btn-primary" href="#" onclick="openNav2()">Nastavenia</button> </li>
+                    <li><button class="btn btn-primary" href="#" onclick="openNav()">
+                        <img src="images/cart1.png" style="width:20px;height:18px;">
+                        Košík
                     </button>
-					<ul class="dropdown-menu">
-						<li ng-repeat="x in states" value="{{x.id_category}}">
-						<a href="#">{{x.name}}</a></li>
-					</ul>
-                   
-                </div>
-            </li>
-          </ul>
-            
-          <ul class="nav navbar-nav navbar-right">
-            <li><button class="btn btn-primary" href="#" onclick="openNav()">Nastavenia</button> </li>
-            <li><button class="btn btn-primary" href="#" onclick="openNav()">
-                <img src="images/cart1.png" style="width:20px;height:18px;">
-                Košík
-                </button>
-            </li>
-          </ul>
-            
-        </div>
-          
-        <div class="collapse navbar-collapse" id="myNavbar2">
-          <ul class="nav navbar-nav">
-              <div class="web_search">
-                <form>
-                    <input type="text" class="form-control-text" id="usr" ng-model="keywords" placeholder="Keywords...">
+                    </li>
+                </ul>
 
-                    <input type="submit" value=" " ng-click="search()"/>
-                </form>
-              </div>
-          </ul>
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="#"> Login</a></li>
-          </ul>
+            </div>
+
+            <div class="collapse navbar-collapse" id="myNavbar2">
+                <ul class="nav navbar-nav">
+                    <div class="web_search">
+                        <form>
+                            <input type="text" class="form-control-text" id="usr" ng-model="keywords" placeholder="Keywords...">
+
+                            <input type="submit" value=" " ng-click="search()"/>
+                        </form>
+                    </div>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#"> Login</a></li>
+                </ul>
+            </div>
         </div>
-      </div>
     </nav>
-    
+
     <div style="position: relative; min-height: 60px; vertical-align: top;">
-    <table class="table table-hover">
-  <thead>
-    <tr>
-      <th></th>
-      <th>Produkt</th>
-      <th>Značka</th>
-      <th>hmotnosť (g)</th>
-      <th>objem (ml)</th>
-      <th>cena(<span class="glyphicon glyphicon-eur"></span>)</th>
-	  <th>Počet</th>
-      <th>Kúpiť</th>
-    </tr>
-  </thead>
-  <tbody ng-repeat="products in data track by $index">
-    <tr>
-      <th>{{$index + 1}}</th>
-      <td>{{products.name}}</td>
-      <td>{{products.brand.name}}</td>
-      <td>{{products.weigth}}</td>
-      <td>{{products.volume}}</td>
-      <td>cena</td>
-	  <td><input type="number" name="quantity" ng-model="quantity" min="1"><br></td>
-      <td><button type="button" class="btn btn-primary btn-sm" ng-click="addProduct(products,quantity)">Pridaj do košíka</button></td>
-    </tr>
-  </tbody>
-</table>
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th></th>
+                <th>Produkt</th>
+                <th>Značka</th>
+                <th>hmotnosť (g)</th>
+                <th>objem (ml)</th>
+                <th>cena(<span class="glyphicon glyphicon-eur"></span>)</th>
+                <th>Počet</th>
+                <th>Kúpiť</th>
+            </tr>
+            </thead>
+            <tbody ng-repeat="products in data track by $index">
+            <tr>
+                <th>{{$index + 1}}</th>
+                <td>{{products.name}}</td>
+                <td>{{products.brand.name}}</td>
+                <td>{{products.weigth}}</td>
+                <td>{{products.volume}}</td>
+                <td>cena</td>
+                <td><input type="number" name="quantity" ng-model="quantity" min="1"><br></td>
+                <td><button type="button" class="btn btn-primary btn-sm" ng-click="addProduct(products,quantity)">Pridaj do košíka</button></td>
+            </tr>
+            </tbody>
+        </table>
     </div>
-        
-        <div id="mySidenav" class="sidenav">
-            <a href="javascript:void(0)" class="cartSign"> Products in cart
-            </a>
-            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;
-            </a>
-        
-            <table>
-                <tr><td></td> <td>Produkt</td><td>Pocet</td></tr>
 
-                <tbody ng-repeat="products in cart track by $index" class="cartTable">
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="cartSign"> Products in cart
+        </a>
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;
+        </a>
 
-                        <th>{{$index + 1}}</th>
-                        <td>{{products.name}}</td>
-                        <td>{{counter[$index]}}</td>
+        <table>
+            <tr><td></td> <td>Produkt</td><td>Pocet</td></tr>
 
-                        <td>
-                            <a href="javascript:void(0)" class="closebtn">
-                            </a>
+            <tbody ng-repeat="products in cart track by $index" class="cartTable">
 
-                        </td>
+            <th>{{$index + 1}}</th>
+            <td>{{products.name}}</td>
+            <td>{{counter[$index]}}</td>
+            <td><button type="button" class="btn btn-primary btn-sm" ng-click="deleteProduct(products)">  X </button></td>
 
-                </tbody>
+            <td>
+                <a href="javascript:void(0)" class="closebtn">
+                </a>
+
+            </td>
+
+            </tbody>
+        </table>
+    </div>
+
+    <div id="mySidenav2" class="sidenav">
+        <a href="javascript:void(0)" class="cartSign"> Shops
+        </a>
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav2()">&times;
+        </a>
+
+            <table><tr>Choose shop</tr><td></td><td>
+            <span ng-repeat="category in states2">
+          <label class="checkbox" for="{{category.id_chain_store}}">
+            <input type="checkbox" ng-model="obchody[$index]" name="group" id="{{category.id_chain_store}}" />
+            {{category.name}}
+          </label><br>
+        </span>
+            </td>
+            <td>
+                <a href="javascript:void(0)" class="closebtn">
+                </a>
+
+            </td>
             </table>
-        </div>
-        
-<span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span>
-        
-        
-    <div style="position: absolute; bottom: 0px;">
-    
-            {{cart}}
-        </div>
-		
+
     </div>
-        
+
+    <div style="position: absolute; bottom: 0px;">
+
+        {{cart}}
+    </div>
+
+</div>
+
 </body>
 </html>

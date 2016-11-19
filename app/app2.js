@@ -20,7 +20,7 @@ app.controller('filterKat',['$scope','$http', function ($scope,$http) {
         console.log(newValue);
     });*/
 
-    $scope.obchody = [true, true, true,true];
+    $scope.obchody = [false, false, false,false];
 
     $scope.$watchCollection('obchody', function(newValue, oldValue){
         console.log(newValue);
@@ -46,8 +46,13 @@ app.controller('filterKat',['$scope','$http', function ($scope,$http) {
                 for(var i = 0; i< $scope.cart.length; i++){
                     if($scope.cart[i].name == product.name){
                         repeat = true;
-                        $scope.cart[i].count +=1;
-                        $scope.counter[i]+=quantity;
+                        if (!quantity) {
+                            $scope.counter[i]+=1;
+
+                        } else{
+                            $scope.counter[i]+=quantity;
+
+                    }                        
                     }
                 }
                 if (!repeat) {
@@ -89,4 +94,13 @@ app.controller('filterKat',['$scope','$http', function ($scope,$http) {
 
     function closeNav() {
         document.getElementById("mySidenav").style.width = "0";
+    }
+
+
+    function openNav2() {
+        document.getElementById("mySidenav2").style.width = "400px";
+    }
+
+    function closeNav2() {
+        document.getElementById("mySidenav2").style.width = "0";
     }
