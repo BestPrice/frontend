@@ -12,20 +12,16 @@ app.controller('filterKat',['$scope','$http', function ($scope,$http) {
         $scope.states2=response;
     });
 
-    /*$scope.$watch('filter', function(newValue, oldValue){
+    $scope.$watch('cart', function(newValue, oldValue){
        console.log(newValue);
     });
 
-    $scope.$watchGroup(['filter','obchody'], function(newValue, oldValue){
-        console.log(newValue);
-    });*/
-
     $scope.obchody = [false, false, false,false];
 
-    $scope.$watchCollection('obchody', function(newValue, oldValue){
+    /*$scope.$watchCollection('obchody', function(newValue, oldValue){
         console.log(newValue);
     });
-    
+    */
 
     $scope.$watchGroup(['keywords', 'filter'], function(newValues, oldValues) {
         $http.get("https://bestprice-backend.herokuapp.com/products?search="+ newValues[0]+";category="+newValues[1]).success(function(response){
@@ -70,8 +66,10 @@ app.controller('filterKat',['$scope','$http', function ($scope,$http) {
                     if (!quantity) {
                         $scope.counter.push(1);
 
+
                     } else{
                         $scope.counter.push(quantity);
+
 
                     }
 
@@ -91,13 +89,20 @@ app.controller('filterKat',['$scope','$http', function ($scope,$http) {
          };
 
     $scope.deleteProduct = function(product){
-        if(product.count > 1){
-           product.count -= 1;
-           var expireDate = new Date();
-           expireDate.setDate(expireDate.getDate() + 1);
-           $cookies.putObject('cart', $scope.cart, {'expires': expireDate});
-           $scope.cart = $cookies.getObject('cart');
-           }
+
+        for(var i = 0; i< $scope.cart.length; i++){
+           if($scope.cart[i].name == product.name){
+            if ($scope.counter[i]>1) {
+                $scope.counter[i]-=1;                     
+            }
+            else{
+             $scope.cart.splice($scope.cart.indexOf(i), 1);
+
+            }
+          }
+      }
+
+        
 
     }
     
