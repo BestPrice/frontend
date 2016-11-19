@@ -17,7 +17,7 @@
     <style>
         #map {
             height: 400px;
-            width: 600px;
+            width: 750px;
         }
     </style>
 
@@ -100,22 +100,28 @@
             </tr>
             </tbody>
         </table>
+
+
     </div>
 
     <div id="mySidenav" class="sidenav">
-        <a href="javascript:void(0)" class="cartSign"> Products in cart
+        <a href="javascript:void(0)" class="cartSign"> Produkty v košíku
         </a>
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;
         </a>
 
-        <table>
-            <tr><td></td> <td>Produkt</td><td>Pocet</td></tr>
+        <table class="table">
+            <tr><td></td> <td>Produkt</td><td>Značka</td><td>Jednotková cena</td><td>Počet</td><td>Výsledná cena</td><td>Reťazec</td></tr>
 
             <tbody ng-repeat="products in cart track by $index" class="cartTable">
 
             <th>{{$index + 1}}</th>
             <td>{{products.name}}</td>
+            <td>{{products.brand.name}}</td>
+            <td>cena</td>
             <td>{{counter[$index]}}</td>
+            <td>vysledna cena</td>
+            <td>obchod</td>
             <td><button type="button" class="btn btn-primary btn-sm" ng-click="deleteProduct(products)">  X </button></td>
 
             <td>
@@ -126,28 +132,7 @@
 
             </tbody>
         </table>
-    </div>
 
-    <div id="mySidenav2" class="sidenav">
-        <a href="javascript:void(0)" class="cartSign"> Shops
-        </a>
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav2()">&times;
-        </a>
-
-            <table><tr>Choose shop</tr><td></td><td>
-            <span ng-repeat="category in states2">
-          <label class="checkbox" for="{{category.id_chain_store}}">
-            <input type="checkbox" ng-model="obchody[$index]" name="group" id="{{category.id_chain_store}}" />
-            {{category.name}}
-          </label><br>
-        </span>
-            </td>
-            <td>
-                <a href="javascript:void(0)" class="closebtn">
-                </a>
-
-            </td>
-            </table>
         <div id="map"></div>
         <script>
             // Note: This example requires that you consent to location sharing when
@@ -157,7 +142,7 @@
 
             function initMap() {
                 var map = new google.maps.Map(document.getElementById('map'), {
-                    center: {lat: -34.397, lng: 150.644},
+                    center: {lat: 48.147871, lng: 17.107569},
                     zoom: 10
                 });
                 var infoWindow = new google.maps.InfoWindow({map: map});
@@ -192,12 +177,27 @@
         <script async defer
                 src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD1KVK_OBllPwbNrZwPTTmy1Uq7FTGCTAA&callback=initMap">
         </script>
+    </div>
+
+    <div id="mySidenav2" class="sidenav">
+        <a href="javascript:void(0)" class="cartSign"> Obchody
+        </a>
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav2()">&times;
+        </a>
+
+
+            <span ng-repeat="category in states2">
+                <label  for="{{category.id_chain_store}}">
+                <input type="checkbox" ng-model="obchody[$index]" id="{{category.id_chain_store}}" />
+                {{category.name}}
+                </label><br>
+        </span>
+
+
+                <a href="javascript:void(0)" class="closebtn">
+                </a>
         </div>
 
-    <div style="position: absolute; bottom: 0px;">
-
-        {{cart}}
-    </div>
 
 </div>
 

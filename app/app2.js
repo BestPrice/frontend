@@ -18,10 +18,10 @@ app.controller('filterKat',['$scope','$http', function ($scope,$http) {
 
     $scope.obchody = [false, false, false,false];
 
-    /*$scope.$watchCollection('obchody', function(newValue, oldValue){
+    $scope.$watch('obchody', function(newValue, oldValue){
         console.log(newValue);
     });
-    */
+    
 
     $scope.$watchGroup(['keywords', 'filter'], function(newValues, oldValues) {
         $http.get("https://bestprice-backend.herokuapp.com/products?search="+ newValues[0]+";category="+newValues[1]).success(function(response){
@@ -29,20 +29,11 @@ app.controller('filterKat',['$scope','$http', function ($scope,$http) {
             console.log(newValues);
              });
     });
-
-        /*
-    $scope.$watch('keywords', function (newValue, oldValue){
-        $http.get("https://bestprice-backend.herokuapp.com/products?search="+ newValue).success(function(response){
-            $scope.data=response;
-        });
-    });*/
     
       
     $scope.cart = [];
     $scope.counter = [];
-    /*$scope.addProduct = function(product){
-        $scope.cart.push(product);
-    }*/
+    
     
     $scope.addProduct = function(product, quantity){
           
@@ -110,7 +101,7 @@ app.controller('filterKat',['$scope','$http', function ($scope,$http) {
 }]);
 
     function openNav() {
-        document.getElementById("mySidenav").style.width = "400px";
+        document.getElementById("mySidenav").style.width = "750px";
     }
 
     function closeNav() {
@@ -119,7 +110,7 @@ app.controller('filterKat',['$scope','$http', function ($scope,$http) {
 
 
     function openNav2() {
-        document.getElementById("mySidenav2").style.width = "600px";
+        document.getElementById("mySidenav2").style.width = "400px";
     }
 
     function closeNav2() {
