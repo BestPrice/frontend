@@ -25,12 +25,21 @@ app.controller('filterKat',['$scope','$http', function ($scope,$http) {
     $scope.$watchCollection('obchody', function(newValue, oldValue){
         console.log(newValue);
     });
+    
 
+    $scope.$watchGroup(['keywords', 'filter'], function(newValues, oldValues) {
+        $http.get("https://bestprice-backend.herokuapp.com/products?search="+ newValues[0]+";category="+newValues[1]).success(function(response){
+            $scope.data=response;
+            console.log(newValues);
+             });
+    });
+
+        /*
     $scope.$watch('keywords', function (newValue, oldValue){
         $http.get("https://bestprice-backend.herokuapp.com/products?search="+ newValue).success(function(response){
             $scope.data=response;
         });
-    });
+    });*/
     
       
     $scope.cart = [];

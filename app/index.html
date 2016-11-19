@@ -37,13 +37,10 @@
                         <div class="dropdown">
                             <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
                                 Filter kategórií
-                                <span class="caret"></span>
+                            <select class="btn btn-primary dropdown-toggle" data-toggle="dropdown" name="filter" ng-model="filter">
+                                <option ng-repeat="x in states" value="{{x.id_category}}">{{x.name}}</option>
+                            </select>
                             </button>
-                            <ul class="dropdown-menu">
-                                <li ng-repeat="x in states" value="{{x.id_category}}">
-                                    <a href="#">{{x.name}}</a></li>
-                            </ul>
-
                         </div>
                     </li>
                 </ul>
