@@ -110,7 +110,7 @@ app.controller('filterKat',['$scope','$http', function ($scope,$http) {
 
 
     function openNav2() {
-        document.getElementById("mySidenav2").style.width = "400px";
+        document.getElementById("mySidenav2").style.width = "350px";
     }
 
     function closeNav2() {
