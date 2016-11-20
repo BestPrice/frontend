@@ -5,6 +5,10 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 
     <script src="app2.js"></script>
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script src="tree.jquery.js"></script>
+    <link rel="stylesheet" href="jqtree.css">
+    
     <title>Porovnavanie cien</title>
 
   </head>
@@ -20,12 +24,14 @@
         <option ng-repeat="x in data" value="{{x.ID}}">{{x.Name}}</option>
     </select>
 
-    {{data}}
+    {{states}}
 
     <select name="filter" ng-model="filter">
         <option ng-repeat="x in states" value="{{x.id_category}}">{{x.name}}</option>
     </select>
     {{filter}}
+    
+    <div id="tree1">TREEE</div>
     <div>
          <span ng-repeat="category in states2">
           <label class="checkbox" for="{{category.ID}}">
@@ -34,6 +40,12 @@
           </label><br>
         </span>
     </div>
+    
+    
+    <select name="filter" ng-model="filter">
+        <option ng-repeat="x in states" value="{{x.ID}}">{{x.Name}}</option>
+    </select>
+    processNodes(states)
 </div>
 
 </body>
