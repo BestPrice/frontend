@@ -9,11 +9,15 @@
     
     <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
     
+    <link href="tree-dropdown/tree-dropdown.css" rel="stylesheet"/>
+    
     <script src="js/jquery-3.1.1.min.js"></script>
     <script src="js/bootstrap.js"></script>
     <script src="js/angular.min.js"></script>
 	<script src="js/ui-bootstrap-tpls-2.2.0.min.js"></script>
     <script src="app2.js"></script>
+    <script src="demo.controller.js"></script>
+    <script src="tree-dropdown/tree-dropdown.js"></script>
 
   <title>Best Price</title>
 </head>
@@ -63,14 +67,24 @@
                 </form>
               </div>
           </ul>
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="#"> Login</a></li>
-          </ul>
         </div>
       </div>
     </nav>
     
     <div style="position: relative; min-height: 60px; vertical-align: top;">
+        
+        <p id="myP">I am a paragraph.</p>
+        <p id="demo"></p>
+        
+        <button onclick="myFunction()">Try it</button>
+        
+        
+        <div class="row" ng-controller="treeDropdownCtrl as ctrl">
+            <div class="col-xs-6">
+                <tree-dropdown class="tree-dropdown" data="ctrl.treeData" selected="ctrl.selected"></tree-dropdown>
+            </div>
+        </div>
+        
     <table class="table table-hover">
   <thead>
     <tr>
