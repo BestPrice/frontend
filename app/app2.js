@@ -7,34 +7,7 @@ app.controller('filterKat',['$scope','$http', function ($scope,$http) {
     $http.get("https://bestprice-backend.herokuapp.com/categories").success(function(response){
             $scope.states=response;
     });
-    var states1 = $scope.states1;
     
-    function buildList(data, isSub){
-        var html = (isSub)?'<div>':''; // Wrap with div if true
-        html += '<ul>';
-        for(item in data){
-            html += '<li>';
-            if(typeof(data[item].sub) === 'object'){ // An array will return 'object'
-                if(isSub){
-                    html += '<a href="' + data[item].link + '">' + data[item].name + '</a>';
-                } else {
-                    html += data[item].id; // Submenu found, but top level list item.
-                }
-                html += buildList(data[item].sub, true); // Submenu found. Calling recursively same method (and wrapping it in a div)
-            } else {
-                html += data[item].id // No submenu
-            }
-            html += '</li>';
-        }
-        html += '</ul>';
-        html += (isSub)?'</div>':'';
-        return html;
-    }
-    
-    function myFunction() {
-    var x = buildList(states1, false);
-    document.getElementById("demo").innerHTML = x;
-}
 
     $http.get("https://bestprice-backend.herokuapp.com/chainstores").success(function(response){
         $scope.states2=response;
