@@ -1,7 +1,7 @@
 /**
  * Created by Alexandra on 12.11.2016.
  */
-var app=angular.module('App',[]);
+var app=angular.module('App',['AppTree']);
 
 app.controller('filterKat',['$scope','$http', function ($scope,$http) {
     $http.get("https://bestprice-backend.herokuapp.com/categories").success(function(response){
@@ -53,6 +53,7 @@ app.controller('filterKat',['$scope','$http', function ($scope,$http) {
 
     $scope.$watchGroup(['keywords', 'filter'], function(newValues, oldValues) {
         $http.get("https://bestprice-backend.herokuapp.com/products?search="+ newValues[0]+";category="+newValues[1]).success(function(response){
+            $scope.novahodnota = newValues;
             $scope.data=response;
             console.log(newValues);
              });
@@ -143,7 +144,7 @@ app.controller('filterKat',['$scope','$http', function ($scope,$http) {
         document.getElementById("mySidenav").style.width = "0";
     }
 
-<<<<<<< HEAD
+
 
     function openNav2() {
         document.getElementById("mySidenav2").style.width = "350px";
@@ -152,57 +153,3 @@ app.controller('filterKat',['$scope','$http', function ($scope,$http) {
     function closeNav2() {
         document.getElementById("mySidenav2").style.width = "0";
     }
-=======
-function processNodes(node) {
-    var return_str = '';
-    switch (jQuery.type(node)) {
-    case 'string':
-        if ($('#hierarchy_chk').is(':checked')) {
-            return_str += '' + node + '';
-        } else {
-            return_str += '' + node + '';
-        }
-        break;
-    case 'array':
-        $.each(node, function (item, value) {
-            return_str += JSONTREEVIEWER.processNodes(this);
-        });
-        break;
-    default:
-        /*object*/
-        $.each(node, function (item, value) {
-            if ($('#hierarchy_chk').is(':checked')) {
-                return_str += '' + item + '';
-                return_str += JSONTREEVIEWER.processNodes(this);
-                return_str += '';
-            } else {
-                return_str += JSONTREEVIEWER.processNodes(this);
-            }
-        });
-    } /*Clean up any undefined elements*/
-    return_str = return_str.replace('undefined', '');
-    return return_str;
-}
-
-var data = [
-    {
-        name: 'node1',
-        children: [
-            { name: 'child1' },
-            { name: 'child2' }
-        ]
-    },
-    {
-        name: 'node2',
-        children: [
-            { name: 'child3' }
-        ]
-    }
-];
-
-$(function() {
-    $('#tree1').tree({
-        data: data
-    });
-});
->>>>>>> refs/remotes/origin/Kris_branch

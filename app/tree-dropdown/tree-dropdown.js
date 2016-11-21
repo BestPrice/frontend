@@ -7,7 +7,7 @@ angular.module('tree.dropdown', []).directive('treeDropdown', treeDropdown);
 treeDropdown.$inject = ['$compile'];
 
 function treeDropdown($compile){
-    var template = "<div class='select' ng-click='openTree()'><p>{{selected.name}}</p></div>";
+    var template = "<div class='select' ng-click='openTree()' name='filter' ng-model='filter'><p>{{selected.name}}</p></div>";
     template += "<div class='list' ng-show='isOpen'></div>";
 
     return {

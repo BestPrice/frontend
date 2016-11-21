@@ -8,29 +8,24 @@
     <link href="css/bootstrap.css" rel="stylesheet">
 
     <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
-<<<<<<< HEAD
-
-=======
     
     <link href="tree-dropdown/tree-dropdown.css" rel="stylesheet"/>
     
->>>>>>> refs/remotes/origin/Kris_branch
     <script src="js/jquery-3.1.1.min.js"></script>
     <script src="js/bootstrap.js"></script>
     <script src="js/angular.min.js"></script>
     <script src="js/ui-bootstrap-tpls-2.2.0.min.js"></script>
     <script src="app2.js"></script>
-<<<<<<< HEAD
+
     <style>
         #map {
             height: 400px;
             width: 750px;
         }
     </style>
-=======
+
     <script src="demo.controller.js"></script>
     <script src="tree-dropdown/tree-dropdown.js"></script>
->>>>>>> refs/remotes/origin/Kris_branch
 
     <title>Best Price</title>
 </head>
@@ -48,21 +43,28 @@
                         <div class="dropdown">
                             <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
                                 Filter kategórií
-                            <select class="btn btn-primary dropdown-toggle" data-toggle="dropdown" name="filter" ng-model="filter">
-                                <option ng-repeat="x in states" value="{{x.id_category}}">{{x.name}}</option>
-                            </select>
+                                <select class="btn btn-primary dropdown-toggle" data-toggle="dropdown" name="filter" ng-model="filter">
+                                    <option ng-repeat="x in states" value="{{x.id_category}}">{{x.name}}</option>
+                                </select>
                             </button>
+                        </div>
+                        <div class="row" ng-controller="treeDropdownCtrl as ctrl">
+                            <div class="col-xs-6">
+                                <tree-dropdown class="tree-dropdown" data="ctrl.treeData" selected="ctrl.selected"></tree-dropdown>
+                            </div>
                         </div>
                     </li>
                 </ul>
 
                 <ul class="nav navbar-nav navbar-right">
-                    <li><button class="btn btn-primary" href="#" onclick="openNav2()">Nastavenia</button> </li>
-                    <li><button class="btn btn-primary" href="#" onclick="openNav()">
+                    <li><button class="btn btn-primary" href="#" onclick="openNav2()">Nastavenia</button>
+                    </li>
+                    <li>
+                        <button class="btn btn-primary" href="#" onclick="openNav()">
                         <img src="images/cart1.png" style="width:20px;height:18px;">
                         Košík
-                    </button>
-<<<<<<< HEAD
+                        </button>
+
                     </li>
                 </ul>
 
@@ -78,47 +80,21 @@
                         </form>
                     </div>
                 </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#"> Login</a></li>
-                </ul>
             </div>
-=======
-					<ul class="dropdown-menu">
-						<li ng-repeat="x in states" value="{{x.ID}}">
-						<a href="#">{{x.Name}}</a></li>
-					</ul>
-                   
-                </div>
-            </li>
-          </ul>
-            
-          <ul class="nav navbar-nav navbar-right">
-            <li><button class="btn btn-primary" href="#" onclick="openNav()">Nastavenia</button> </li>
-            <li><button class="btn btn-primary" href="#" onclick="openNav()">
-                <img src="images/cart1.png" style="width:20px;height:18px;">
-                Košík
-                </button>
-            </li>
-          </ul>
-            
-        </div>
-          
-        <div class="collapse navbar-collapse" id="myNavbar2">
-          <ul class="nav navbar-nav">
-              <div class="web_search">
-                <form>
-                    <input type="text" class="form-control-text" id="usr" ng-model="keywords" placeholder="Keywords...">
-
-                    <input type="submit" value=" " ng-click="search()"/>
-                </form>
-              </div>
-          </ul>
->>>>>>> refs/remotes/origin/Kris_branch
+            <div>
+				<ul class="dropdown-menu">
+				    <li ng-repeat="x in states" value="{{x.ID}}">
+						<a href="#">{{x.Name}}</a>
+                    </li>
+				</ul>
+            </div>
         </div>
     </nav>
 
     <div style="position: relative; min-height: 60px; vertical-align: top;">
-<<<<<<< HEAD
+        
+        
+        
         <table class="table table-hover">
             <thead>
             <tr>
@@ -146,48 +122,6 @@
             </tbody>
         </table>
 
-
-=======
-        
-        <p id="myP">I am a paragraph.</p>
-        <p id="demo"></p>
-        
-        <button onclick="myFunction()">Try it</button>
-        
-        
-        <div class="row" ng-controller="treeDropdownCtrl as ctrl">
-            <div class="col-xs-6">
-                <tree-dropdown class="tree-dropdown" data="ctrl.treeData" selected="ctrl.selected"></tree-dropdown>
-            </div>
-        </div>
-        
-    <table class="table table-hover">
-  <thead>
-    <tr>
-      <th></th>
-      <th>Produkt</th>
-      <th>Značka</th>
-      <th>hmotnosť (g)</th>
-      <th>objem (ml)</th>
-      <th>cena(<span class="glyphicon glyphicon-eur"></span>)</th>
-	  <th>Počet</th>
-      <th>Kúpiť</th>
-    </tr>
-  </thead>
-  <tbody ng-repeat="products in data">
-    <tr>
-      <th>{{$index + 1}}</th>
-      <td>{{products.name}}</td>
-      <td>{{products.brand.name}}</td>
-      <td>{{products.weigth}}</td>
-      <td>{{products.volume}}</td>
-      <td>cena</td>
-	  <td><input type="number" name="quantity" min="0"><br></td>
-      <td><button type="button" class="btn btn-primary btn-sm" ng-click="addProduct(products.name)">Pridaj do košíka</button></td>
-    </tr>
-  </tbody>
-</table>
->>>>>>> refs/remotes/origin/Kris_branch
     </div>
 
     <div id="mySidenav" class="sidenav">
