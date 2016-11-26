@@ -115,7 +115,8 @@
                 <td>{{products.weigth}}</td>
                 <td>{{products.volume}}</td>
                 <td><input type="number" name="quantity" ng-model="quantity" min="1" max="10000" placeholder="1"><br></td>
-                <td><button type="button" class="btn btn-primary btn-sm" ng-click="addProduct(products,quantity)">Pridaj do košíka</button></td>
+                <td><button type="button" class="btn btn-primary btn-sm" ng-click="addProduct(products,quantity);showme=true">Pridaj do košíka</button></td>
+                <td><p ng-show="showme">Pridané do košíka!</p></td>
             </tr>
             </tbody>
         </table>
