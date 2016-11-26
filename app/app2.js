@@ -89,8 +89,8 @@ app.controller('filterKat',['$scope','$http', function ($scope,$http) {
                 $scope.counter[i]-=1;                     
             }
             else{
-             $scope.cart.splice($scope.cart.indexOf(i), 1);
-
+            $scope.cart.splice($scope.cart.indexOf(i), 1);
+            $scope.counter.splice($scope.cart.indexOf(i), 1);
             }
           }
       }

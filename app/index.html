@@ -103,7 +103,6 @@
                 <th>Značka</th>
                 <th>hmotnosť (g)</th>
                 <th>objem (ml)</th>
-                <th>cena(<span class="glyphicon glyphicon-eur"></span>)</th>
                 <th>Počet</th>
                 <th>Kúpiť</th>
             </tr>
@@ -115,8 +114,7 @@
                 <td>{{products.brand.name}}</td>
                 <td>{{products.weigth}}</td>
                 <td>{{products.volume}}</td>
-                <td>cena</td>
-                <td><input type="number" name="quantity" ng-model="quantity" min="1"><br></td>
+                <td><input type="number" name="quantity" ng-model="quantity" min="1" max="10000" placeholder="1"><br></td>
                 <td><button type="button" class="btn btn-primary btn-sm" ng-click="addProduct(products,quantity)">Pridaj do košíka</button></td>
             </tr>
             </tbody>
@@ -131,17 +129,14 @@
         </a>
 
         <table class="table">
-            <tr><td></td> <td>Produkt</td><td>Značka</td><td>Jednotková cena</td><td>Počet</td><td>Výsledná cena</td><td>Reťazec</td></tr>
+            <tr><td></td> <td>Produkt</td><td>Značka</td><td>Počet</td></tr>
 
             <tbody ng-repeat="products in cart track by $index" class="cartTable">
 
             <th>{{$index + 1}}</th>
             <td>{{products.name}}</td>
             <td>{{products.brand.name}}</td>
-            <td>cena</td>
             <td>{{counter[$index]}}</td>
-            <td>vysledna cena</td>
-            <td>obchod</td>
             <td><button type="button" class="btn btn-primary btn-sm" ng-click="deleteProduct(products)">  X </button></td>
 
             <td>
