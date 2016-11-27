@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="css/bootstrap.css" rel="stylesheet">
+
+    <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+    
+    <link href="tree-dropdown/tree-dropdown.css" rel="stylesheet"/>
+    
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/angular.min.js"></script>
+    <script src="js/ui-bootstrap-tpls-2.2.0.min.js"></script>
+    <script src="app2.js"></script>
+    <script src="demo.controller.js"></script>
+    <script src="tree-dropdown/tree-dropdown.js"></script>
+
+    <title>Best Price</title>
+</head>
+<body>
+<div class="container">
+  <div class="jumbotron">
+  <center>
+    <h1>Best Price</h1> 
+	</center>
+  </div>
+</div>
+
+<input id="d" type="submit" name="upload" />
+
+<script type="text/javascript">
+function tempAlert(msg,duration)
+{
+     var el = document.createElement("div");
+     el.setAttribute("style","position:absolute;top:40%;left:20%;background-color:white;");
+     el.innerHTML = msg;
+     setTimeout(function(){
+      el.parentNode.removeChild(el);
+     },duration);
+     document.body.appendChild(el);
+}
+
+var d = document.getElementById('d');
+d.onclick = function(){ tempAlert("Pridané do košíka",1000); };
+</script>
+
+
+
+
+   
+</body>
+</html>
