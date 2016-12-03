@@ -1,7 +1,7 @@
 /**
  * Created by Alexandra on 12.11.2016.
  */
-var app=angular.module('App',['AppTree']);
+var app=angular.module('App',['tree.dropdown']);
 
 app.controller('filterKat',['$scope','$http', function ($scope,$http) {
     $http.get("https://bestprice-backend.herokuapp.com/categories").success(function(response){
@@ -24,7 +24,7 @@ app.controller('filterKat',['$scope','$http', function ($scope,$http) {
     });
     
 
-    $scope.$watchGroup(['keywords', 'filter'], function(newValues, oldValues) {
+    $scope.$watchGroup(['keywords', 'ctrl.selected.id_category'], function(newValues, oldValues) {
         $http.get("https://bestprice-backend.herokuapp.com/products?search="+ newValues[0]+";category="+newValues[1]).success(function(response){
             $scope.novahodnota = newValues;
             $scope.data=response;
@@ -32,6 +32,20 @@ app.controller('filterKat',['$scope','$http', function ($scope,$http) {
              });
     });
     
+    //********* start of  DropDown controller
+    
+    var ctrl = this;
+    
+    $http.get("https://bestprice-backend.herokuapp.com/categories").success(function(response){
+            ctrl.treeData = response;
+    
+    // Set default selected...
+    ctrl.selected = ctrl.treeData[0];
+         
+    
+    });
+    
+    //********* end of  DropDown controller
       
     $scope.cart = [];
     $scope.counter = [];
@@ -125,9 +139,6 @@ app.controller('filterKat',['$scope','$http', function ($scope,$http) {
     
 
 }]);
-
-
-//************************************
 
 
 

@@ -16,6 +16,7 @@
     <script src="js/angular.min.js"></script>
     <script src="js/ui-bootstrap-tpls-2.2.0.min.js"></script>
     <script src="app2.js"></script>
+    <script src="tree-dropdown/tree-dropdown.js"></script>
 
     <style>
         #map {
@@ -23,16 +24,14 @@
             width: 750px;
         }
     </style>
-
-    <script src="demo.controller.js"></script>
-    <script src="tree-dropdown/tree-dropdown.js"></script>
+    
 
     <title>Best Price</title>
 </head>
 
 
 <body>
-<div ng-controller="filterKat">
+<div ng-controller="filterKat as ctrl">
 
     <nav class="navbar navbar-inverse">
         <div class="container-fluid">
@@ -41,18 +40,13 @@
                 <ul class="nav navbar-nav">
                     <li>
                         <div class="dropdown">
-                            <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-                                Filter kategórií
-                                <select class="btn btn-primary dropdown-toggle" data-toggle="dropdown" name="filter" ng-model="filter">
-                                    <option ng-repeat="x in states" value="{{x.id_category}}">{{x.name}}</option>
-                                </select>
-                            </button>
-                        </div>
-                        <div class="row" ng-controller="treeDropdownCtrl as ctrl">
-                            <div class="col-xs-6">
-                                <tree-dropdown class="tree-dropdown" data="ctrl.treeData" selected="ctrl.selected"></tree-dropdown>
+                            <div class="row">
+                                <div class="col-xs-6">
+                                    <tree-dropdown class="tree-dropdown" data="ctrl.treeData" selected="ctrl.selected" ng-model="selected"></tree-dropdown>
+                                </div>
                             </div>
                         </div>
+                        
                     </li>
                 </ul>
 
