@@ -105,7 +105,7 @@ app.controller('filterKat',['$scope','$http', function ($scope,$http) {
 		 var x="{\"products\": [{\"id_product\": \"fa859c15-b89c-4b72-aace-8f09924cce39\",\"count\": 1},{\"id_product\": \"ef9929ce-40d4-47d4-b1a7-cde616df2a0c\",\"count\": 2},{\"id_product\": \"3b59192c-21a4-4e43-985c-33592b5fe4e4\",\"count\": 3}],\"user_preference\": {\"id_chain_stores\": [ \"6e38b271-321f-4df1-b8f7-87090b532f68\"],\"max_stores\": 1}}";
 		
 		/*for(var i = 0; i< $scope.cart.length; i++){
-			if($scope.cart[i].name == product.name){
+			if($scope.cart[i].name == product.name){ = {}
 				repeat = true;
 				if (!quantity) {
 					$scope.counter[i]+=1;
@@ -116,10 +116,25 @@ app.controller('filterKat',['$scope','$http', function ($scope,$http) {
 			}                        
 			}
 		}*/
-		$http.post("https://bestprice-backend.herokuapp.com/shop",x).success(function(response){
+		var poleObchodov = [];
+		if($scope.obchody[0]) poleObchodov.push("6e38b271-321f-4df1-b8f7-87090b532f68"); //Billa
+		if($scope.obchody[1]) poleObchodov.push("6259218a-cf1f-4d7e-b787-50db28de07f6"); //Lidl
+		if($scope.obchody[2]) poleObchodov.push("454025b0-2518-4376-8c96-380b0f7d78a0"); //Tesco
+		if($scope.obchody[3]) poleObchodov.push("8bc9a761-5a8a-437b-9663-e7b33db7aa33"); //Coop Jednota
+	
+		var parameter = {};
+		var user_preference = {};
+		user_preference["id_chain_stores"] = poleObchodov;
+		user_preference["max_stores"] = $scope.pocetObchodov;
+		parameter["products"] = $scope.cart;
+		parameter["user_preference"] = user_preference;
+		
+		$http.post("https://bestprice-backend.herokuapp.com/shop",parameter).success(function(response){
 			$scope.states=response;
-			window.location.href='bestprice.html';
+			//window.location.href='bestprice.html';
 			console.log("vystup je  = " + JSON.stringify(response));
+			//console.log("produky su" + JSON.stringify($scope.cart));
+			console.log("vstup je " + JSON.stringify(parameter));
 			window.alert(response);
     });  
 	//window.alert("not success");
