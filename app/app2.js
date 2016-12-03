@@ -98,6 +98,30 @@ app.controller('filterKat',['$scope','$http', function ($scope,$http) {
         
 
     }
+	
+	$scope.calculatePrice = function(cart){
+	
+		$scope.param = [];
+		
+		/*for(var i = 0; i< $scope.cart.length; i++){
+			if($scope.cart[i].name == product.name){
+				repeat = true;
+				if (!quantity) {
+					$scope.counter[i]+=1;
+
+				} else{
+					$scope.counter[i]+=quantity;
+
+			}                        
+			}
+		}*/
+		$http.post("https://bestprice-backend.herokuapp.com/shop","").success(function(response){
+			$scope.states=response;
+			window.alert("success");
+    });  
+	window.alert("not success");
+		  
+	}
     
 
 }]);
