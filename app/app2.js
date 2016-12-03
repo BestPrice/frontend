@@ -116,6 +116,7 @@ app.controller('filterKat',['$scope','$http', function ($scope,$http) {
 	$scope.calculatePrice = function(cart){
 	
 		$scope.param = [];
+		 var x="{\"products\": [{\"id_product\": \"fa859c15-b89c-4b72-aace-8f09924cce39\",\"count\": 1},{\"id_product\": \"ef9929ce-40d4-47d4-b1a7-cde616df2a0c\",\"count\": 2},{\"id_product\": \"3b59192c-21a4-4e43-985c-33592b5fe4e4\",\"count\": 3}],\"user_preference\": {\"id_chain_stores\": [ \"6e38b271-321f-4df1-b8f7-87090b532f68\"],\"max_stores\": 1}}";
 		
 		/*for(var i = 0; i< $scope.cart.length; i++){
 			if($scope.cart[i].name == product.name){
@@ -129,11 +130,13 @@ app.controller('filterKat',['$scope','$http', function ($scope,$http) {
 			}                        
 			}
 		}*/
-		$http.post("https://bestprice-backend.herokuapp.com/shop","").success(function(response){
+		$http.post("https://bestprice-backend.herokuapp.com/shop",x).success(function(response){
 			$scope.states=response;
-			window.alert("success");
+			window.location.href='bestprice.html';
+			console.log("vystup je  = " + JSON.stringify(response));
+			window.alert(response);
     });  
-	window.alert("not success");
+	//window.alert("not success");
 		  
 	}
     
