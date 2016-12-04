@@ -8,15 +8,20 @@ app.controller('filterKat',['$scope','$http', function ($scope,$http) {
             $scope.states=response;
     });
     
-
     $http.get("https://bestprice-backend.herokuapp.com/chainstores").success(function(response){
         $scope.states2=response;
     });
+
+    $http.get("https://bestprice-backend.herokuapp.com/stores").success(function(response){
+        $scope.stores=response;
+    });
+
 
     $scope.$watch('cart', function(newValue, oldValue){
        console.log(newValue);
     });
 
+	$scope.skuska={"stores":[{"chain_store_name":"Lidl","products":[{"id_product":"476ce886-ef33-4f06-a34b-1f01b5330292","product_name":"Biely Jogurt","brand_name":"Rajo","count":0,"price":"0"}]},{"chain_store_name":"Tesco","products":[{"id_product":"cedac768-da7e-4467-8876-a0b26adc5e4b","product_name":"Mňam dva duo - Vanilka","brand_name":"Rajo","count":1,"price":"0.32"},{"id_product":"01256ec5-8af0-4a7c-a367-8acc01c1184b","product_name":"Mňam dva duo - Čokoláda","brand_name":"Rajo","count":1,"price":"0.43"}]}],"shop_price_total":"0.75"}
     $scope.obchody = [false, false, false,false];
 
     $scope.$watch('obchody', function(newValue, oldValue){
@@ -85,6 +90,7 @@ app.controller('filterKat',['$scope','$http', function ($scope,$http) {
             } else {
                     $scope.cart.push(product); 
                     if (!quantity) {
+                        $scope.cart.count.push(1);
                         $scope.counter.push(1);
 
                     } else{
@@ -103,8 +109,8 @@ app.controller('filterKat',['$scope','$http', function ($scope,$http) {
                 $scope.counter[i]-=1;                     
             }
             else{
-            $scope.cart.splice($scope.cart.indexOf(i), 1);
             $scope.counter.splice($scope.cart.indexOf(i), 1);
+            $scope.cart.splice($scope.cart.indexOf(i), 1);
             }
           }
       }

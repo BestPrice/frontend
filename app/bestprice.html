@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+<!doctype html>
+
+<html ng-app="App">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,12 +16,18 @@
     <script src="js/angular.min.js"></script>
     <script src="js/ui-bootstrap-tpls-2.2.0.min.js"></script>
     <script src="app2.js"></script>
-    <script src="demo.controller.js"></script>
     <script src="tree-dropdown/tree-dropdown.js"></script>
-
+    <style>
+        #map {
+            height: 400px;
+            width: 750px;
+        }
+    </style>
     <title>Best Price</title>
 </head>
 <body>
+<div ng-controller="filterKat">
+
 <div class="container">
   <div class="jumbotron">
   <center>
@@ -27,28 +35,69 @@
 	</center>
   </div>
 </div>
+    {{skuska}}
+<table class="table">
+    <tr><td>Obchod</td> <td>Produkt</td><td>Znaƒçka</td><td>Poƒçet</td><td>Cena</td></tr>
 
-<input id="d" type="submit" name="upload" />
+    <tbody ng-repeat="x in skuska" class="cartTable">
+    <tr>
+    <td>{{x[$index].chain_store_name}}</td>
+    <td>{{x[$index].products[$index].product_name}}</td>
+    <td>{{x[$index].products[$index].brand_name}}</td>
+    <td>{{x[$index].products[$index].count}}</td>
+    <td>{{x[$index].products[$index].price}}</td>
+        <td>{{x[1].products[].product_name}}</td>
 
-<script type="text/javascript">
-function tempAlert(msg,duration)
-{
-     var el = document.createElement("div");
-     el.setAttribute("style","position:absolute;top:40%;left:20%;background-color:white;");
-     el.innerHTML = msg;
-     setTimeout(function(){
-      el.parentNode.removeChild(el);
-     },duration);
-     document.body.appendChild(el);
-}
+    </tr>
+    </tbody>
+</table>
 
-var d = document.getElementById('d');
-d.onclick = function(){ tempAlert("PridanÈ do koöÌka",1000); };
+<div id="map"></div>
+<script>
+    // Note: This example requires that you consent to location sharing when
+    // prompted by your browser. If you see the error "The Geolocation service
+    // failed.", it means you probably did not give permission for the browser to
+    // locate you.
+    function initMap() {
+        var map = new google.maps.Map(document.getElementById('map'), {
+            center: {lat: 48.147871, lng: 17.107569},
+            zoom: 10
+        });
+        var infoWindow = new google.maps.InfoWindow({map: map});
+
+        // Try HTML5 geolocation.
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function(position) {
+                var pos = {
+                    lat: position.coords.latitude,
+                    lng: position.coords.longitude
+                };
+
+                infoWindow.setPosition(pos);
+                infoWindow.setContent('Location found.');
+                map.setCenter(pos);
+            }, function() {
+                handleLocationError(true, infoWindow, map.getCenter());
+            });
+        } else {
+            // Browser doesn't support Geolocation
+            handleLocationError(false, infoWindow, map.getCenter());
+        }
+    }
+
+    function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+        infoWindow.setPosition(pos);
+        infoWindow.setContent(browserHasGeolocation ?
+                'Error: The Geolocation service failed.' :
+                'Error: Your browser doesn\'t support geolocation.');
+    }
+</script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD1KVK_OBllPwbNrZwPTTmy1Uq7FTGCTAA&callback=initMap">
 </script>
 
 
 
-
-   
+</div>
 </body>
 </html>

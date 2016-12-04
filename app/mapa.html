@@ -1,0 +1,20 @@
+<!doctype html>
+<head>
+<script src="https://maps.googleapis.com/maps/api/js?AIzaSyD1KVK_OBllPwbNrZwPTTmy1Uq7FTGCTAA=&sensor=false&extension=.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.min.js"></script>
+    <style>#map {
+        height: 420px;
+    }
+    </style>
+    </head>
+<div ng-app="mapsApp" ng-controller="MapCtrl">
+    <H3>
+        Markers
+    </H3>
+    <div id="class" ng-repeat="marker in markers | orderBy : 'title'">
+        {{marker.position}}
+    </div>
+</div>
+
+<div id="map"></div>
+</html>
