@@ -5,7 +5,8 @@ var app=angular.module('App',['tree.dropdown']);
 
 app.controller('filterKat',['$scope','$http', function ($scope,$http) {
     $http.get("https://bestprice-backend.herokuapp.com/categories").success(function(response){
-            $scope.states=response;
+        $scope.states=response;
+        
     });
     
     $http.get("https://bestprice-backend.herokuapp.com/chainstores").success(function(response){
@@ -30,6 +31,9 @@ app.controller('filterKat',['$scope','$http', function ($scope,$http) {
     
 
     $scope.$watchGroup(['keywords', 'ctrl.selected.id_category'], function(newValues, oldValues) {
+        if(newValues[1]=="1111"){
+            newValues[1] = "";
+        }
         $http.get("https://bestprice-backend.herokuapp.com/products?search="+ newValues[0]+";category="+newValues[1]).success(function(response){
             $scope.novahodnota = newValues;
             $scope.data=response;
@@ -42,10 +46,17 @@ app.controller('filterKat',['$scope','$http', function ($scope,$http) {
     var ctrl = this;
     
     $http.get("https://bestprice-backend.herokuapp.com/categories").success(function(response){
-            ctrl.treeData = response;
+        
+        var text = '[{ "id_category": "1111", "name":"všetky produkty...", "subcategories":[]}]';
+        
+        var obj = JSON.parse(text);
+        
+        obj[0].subcategories = response;
+        
+        ctrl.treeData = obj;
     
-    // Set default selected...
-    ctrl.selected = ctrl.treeData[0];
+        // Set default selected...
+        ctrl.selected = ctrl.treeData[0];
          
     
     });
