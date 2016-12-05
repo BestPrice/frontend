@@ -132,6 +132,10 @@ app.controller('filterKat',['$scope','$http', function ($scope,$http) {
         
 
     }
+	$scope.prepni = function(){
+		$scope.showResults=false;
+		
+	}
 	
 	$scope.calculatePrice = function(cart){
 	
