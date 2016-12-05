@@ -29,15 +29,15 @@
 <div ng-controller="filterKat">
 
 <div class="container">
-  <div class="jumbotron">
   <center>
     <h1>Best Price</h1> 
 	</center>
-  </div>
 </div>
-    <table class="table table-bordered" ng-repeat="module in skuska.stores">
+    <table class="table" ng-repeat="module in skuska.stores">
+        <tbody class="cartTable">
+
         <tr><td>
-            <h3 class="moduletitle">{{ module.chain_store_name }}</h3>
+            <h3>{{ module.chain_store_name }}</h3>
         </td>
         </tr>
         <td>Produkt</td><td>Značka</td><td>Možstvo</td><td>Cena</td>
@@ -57,6 +57,7 @@
             </td>
 
         </tr>
+        </tbody>
     </table>
 
 
