@@ -35,22 +35,32 @@
 	</center>
   </div>
 </div>
-<table class="table">
-    <tr><td>Obchod</td> <td>Produkt</td><td>Značka</td><td>Počet</td><td>Cena</td></tr>
+    <table class="table table-bordered" ng-repeat="module in skuska.stores">
+        <tr><td>
+            <h3 class="moduletitle">{{ module.chain_store_name }}</h3>
+        </td>
+        </tr>
+        <td>Produkt</td><td>Značka</td><td>Možstvo</td><td>Cena</td>
 
-    <tbody ng-repeat="x in skuska" class="cartTable">
-    <tr ng-repeat="y in x.products">
-    <td>{{}}</td>
-        <td>{{x[$index].products[$index].product_name}}</td>
-        <td>{{x[$index].products[$index].brand_name}}</td>
-        <td>{{x[$index].products[$index].count}}</td>
-        <td>{{x[$index].products[$index].price}}</td>
+        <tr ng-repeat="week in module.products">
+            <td>
+                {{ week.product_name }}
+            </td>
+            <td>
+                {{ week.brand_name }}
+            </td>
+            <td>
+                {{ week.count }}
+            </td>
+            <td>
+                {{ week.price }}
+            </td>
 
-    </tr>
-    </tbody>
-</table>
+        </tr>
+    </table>
 
-<div id="map"></div>
+
+        <div id="map"></div>
 <script>
     // Note: This example requires that you consent to location sharing when
     // prompted by your browser. If you see the error "The Geolocation service
