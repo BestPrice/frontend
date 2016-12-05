@@ -29,30 +29,45 @@
 <div ng-controller="filterKat">
 
 <div class="container">
-  <div class="jumbotron">
   <center>
     <h1>Best Price</h1> 
 	</center>
-  </div>
 </div>
+<<<<<<< HEAD
 	{{vypocetCeny}}
 <table class="table">
     <tr><td>Obchod</td> <td>Produkt</td><td>Značka</td><td>Počet</td><td>Cena</td></tr>
+=======
+    <table class="table" ng-repeat="module in skuska.stores">
+        <tbody class="cartTable">
+>>>>>>> origin/master
 
-    <tbody ng-repeat="x in skuska" class="cartTable">
-    <tr>
-    <td>{{x[$index].chain_store_name}}</td>
-    <td>{{x[$index].products[$index].product_name}}</td>
-    <td>{{x[$index].products[$index].brand_name}}</td>
-    <td>{{x[$index].products[$index].count}}</td>
-    <td>{{x[$index].products[$index].price}}</td>
-        <td>{{x[1].products[].product_name}}</td>
+        <tr><td>
+            <h3>{{ module.chain_store_name }}</h3>
+        </td>
+        </tr>
+        <td>Produkt</td><td>Značka</td><td>Možstvo</td><td>Cena</td>
 
-    </tr>
-    </tbody>
-</table>
+        <tr ng-repeat="week in module.products">
+            <td>
+                {{ week.product_name }}
+            </td>
+            <td>
+                {{ week.brand_name }}
+            </td>
+            <td>
+                {{ week.count }}
+            </td>
+            <td>
+                {{ week.price }}
+            </td>
 
-<div id="map"></div>
+        </tr>
+        </tbody>
+    </table>
+
+
+        <div id="map"></div>
 <script>
     // Note: This example requires that you consent to location sharing when
     // prompted by your browser. If you see the error "The Geolocation service

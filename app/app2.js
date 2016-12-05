@@ -5,7 +5,8 @@ var app=angular.module('App',['tree.dropdown']);
 
 app.controller('filterKat',['$scope','$http', function ($scope,$http) {
     $http.get("https://bestprice-backend.herokuapp.com/categories").success(function(response){
-            $scope.states=response;
+        $scope.states=response;
+        
     });
     
     $http.get("https://bestprice-backend.herokuapp.com/chainstores").success(function(response){
@@ -21,9 +22,14 @@ app.controller('filterKat',['$scope','$http', function ($scope,$http) {
        console.log(newValue);
     });
 
+<<<<<<< HEAD
 	$scope.skuska={"stores":[{"chain_store_name":"Lidl","products":[{"id_product":"476ce886-ef33-4f06-a34b-1f01b5330292","product_name":"Biely Jogurt","brand_name":"Rajo","count":0,"price":"0"}]},{"chain_store_name":"Tesco","products":[{"id_product":"cedac768-da7e-4467-8876-a0b26adc5e4b","product_name":"Mňam dva duo - Vanilka","brand_name":"Rajo","count":1,"price":"0.32"},{"id_product":"01256ec5-8af0-4a7c-a367-8acc01c1184b","product_name":"Mňam dva duo - Čokoláda","brand_name":"Rajo","count":1,"price":"0.43"}]}],"shop_price_total":"0.75"}
     $scope.obchody = [true, true, true,true];
 	$scope.vypocetCeny;
+=======
+	$scope.skuska={"stores":[{"chain_store_name":"Lidl","products":[{"id_product":"476ce886-ef33-4f06-a34b-1f01b5330292","product_name":"Biely Jogurt","brand_name":"Rajo","count":0,"price":"0"}]},{"chain_store_name":"Tesco","products":[{"id_product":"cedac768-da7e-4467-8876-a0b26adc5e4b","product_name":"Mňam dva duo - Vanilka","brand_name":"Rajo","count":1,"price":"0.32"},{"id_product":"01256ec5-8af0-4a7c-a367-8acc01c1184b","product_name":"Mňam dva duo - Čokoláda","brand_name":"Rajo","count":1,"price":"0.43"}]}],"shop_price_total":"0.75"};
+    $scope.obchody = [false, false, false,false];
+>>>>>>> origin/master
 
     $scope.$watch('obchody', function(newValue, oldValue){
         console.log(newValue);
@@ -31,6 +37,13 @@ app.controller('filterKat',['$scope','$http', function ($scope,$http) {
     
 
     $scope.$watchGroup(['keywords', 'ctrl.selected.id_category'], function(newValues, oldValues) {
+        $scope.data=null;
+        if(newValues[1]=="1111"){
+            newValues[1] = "";
+        }
+        if(newValues[0]==null){
+            newValues[0] = "";
+        }
         $http.get("https://bestprice-backend.herokuapp.com/products?search="+ newValues[0]+";category="+newValues[1]).success(function(response){
             $scope.novahodnota = newValues;
             $scope.data=response;
@@ -43,10 +56,17 @@ app.controller('filterKat',['$scope','$http', function ($scope,$http) {
     var ctrl = this;
     
     $http.get("https://bestprice-backend.herokuapp.com/categories").success(function(response){
-            ctrl.treeData = response;
+        
+        var text = '[{ "id_category": "1111", "name":"všetky produkty...", "subcategories":[]}]';
+        
+        var obj = JSON.parse(text);
+        
+        obj[0].subcategories = response;
+        
+        ctrl.treeData = obj;
     
-    // Set default selected...
-    ctrl.selected = ctrl.treeData[0];
+        // Set default selected...
+        ctrl.selected = ctrl.treeData[0];
          
     
     });

@@ -79,6 +79,7 @@ body {
 }
 
 .tree-dropdown .level-0 {
+    color: #cccccc;
    padding-left: 15px
 }
 .tree-dropdown .level-1 {
