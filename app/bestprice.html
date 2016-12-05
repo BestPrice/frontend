@@ -35,18 +35,16 @@
 	</center>
   </div>
 </div>
-    {{skuska}}
 <table class="table">
     <tr><td>Obchod</td> <td>Produkt</td><td>Značka</td><td>Počet</td><td>Cena</td></tr>
 
     <tbody ng-repeat="x in skuska" class="cartTable">
-    <tr>
-    <td>{{x[$index].chain_store_name}}</td>
-    <td>{{x[$index].products[$index].product_name}}</td>
-    <td>{{x[$index].products[$index].brand_name}}</td>
-    <td>{{x[$index].products[$index].count}}</td>
-    <td>{{x[$index].products[$index].price}}</td>
-        <td>{{x[1].products[].product_name}}</td>
+    <tr ng-repeat="y in x.products">
+    <td>{{}}</td>
+        <td>{{x[$index].products[$index].product_name}}</td>
+        <td>{{x[$index].products[$index].brand_name}}</td>
+        <td>{{x[$index].products[$index].count}}</td>
+        <td>{{x[$index].products[$index].price}}</td>
 
     </tr>
     </tbody>
