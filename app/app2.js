@@ -120,6 +120,7 @@ app.controller('filterKat',['$scope','$http', function ($scope,$http) {
 	
 		
 		$scope.param = [];
+
 		//test input
 		var x="{\"products\": [{\"id_product\": \"fa859c15-b89c-4b72-aace-8f09924cce39\",\"count\": 1},{\"id_product\": \"ef9929ce-40d4-47d4-b1a7-cde616df2a0c\",\"count\": 2},{\"id_product\": \"3b59192c-21a4-4e43-985c-33592b5fe4e4\",\"count\": 3}],\"user_preference\": {\"id_chain_stores\": [ \"6e38b271-321f-4df1-b8f7-87090b532f68\"],\"max_stores\": 1}}";
 		
@@ -150,12 +151,14 @@ app.controller('filterKat',['$scope','$http', function ($scope,$http) {
 		
 		$http.post("https://bestprice-backend.herokuapp.com/shop",parameter).success(function(response){
 			$scope.vypocetCeny=response;
-			//window.location.href='bestprice.html';
+			window.location.href='bestprice.html';
 			console.log("vstup je  = " + JSON.stringify(parameter));
 			//console.log("produky su" + JSON.stringify($scope.cart));
 			console.log("vystup je" + JSON.stringify($scope.vypocetCeny));
 			//console.log("produky sa " + JSON.stringify(poleProduktov));
 			//window.alert(response);
+
+		 
     });  
 	//window.alert("not success");
 		  
