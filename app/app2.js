@@ -31,8 +31,12 @@ app.controller('filterKat',['$scope','$http', function ($scope,$http) {
     
 
     $scope.$watchGroup(['keywords', 'ctrl.selected.id_category'], function(newValues, oldValues) {
+        $scope.data=null;
         if(newValues[1]=="1111"){
             newValues[1] = "";
+        }
+        if(newValues[0]==null){
+            newValues[0] = "";
         }
         $http.get("https://bestprice-backend.herokuapp.com/products?search="+ newValues[0]+";category="+newValues[1]).success(function(response){
             $scope.novahodnota = newValues;
