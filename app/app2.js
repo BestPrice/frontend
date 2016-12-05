@@ -22,14 +22,11 @@ app.controller('filterKat',['$scope','$http', function ($scope,$http) {
        console.log(newValue);
     });
 
-<<<<<<< HEAD
 	$scope.skuska={"stores":[{"chain_store_name":"Lidl","products":[{"id_product":"476ce886-ef33-4f06-a34b-1f01b5330292","product_name":"Biely Jogurt","brand_name":"Rajo","count":0,"price":"0"}]},{"chain_store_name":"Tesco","products":[{"id_product":"cedac768-da7e-4467-8876-a0b26adc5e4b","product_name":"Mňam dva duo - Vanilka","brand_name":"Rajo","count":1,"price":"0.32"},{"id_product":"01256ec5-8af0-4a7c-a367-8acc01c1184b","product_name":"Mňam dva duo - Čokoláda","brand_name":"Rajo","count":1,"price":"0.43"}]}],"shop_price_total":"0.75"}
     $scope.obchody = [true, true, true,true];
 	$scope.vypocetCeny;
-=======
-	$scope.skuska={"stores":[{"chain_store_name":"Lidl","products":[{"id_product":"476ce886-ef33-4f06-a34b-1f01b5330292","product_name":"Biely Jogurt","brand_name":"Rajo","count":0,"price":"0"}]},{"chain_store_name":"Tesco","products":[{"id_product":"cedac768-da7e-4467-8876-a0b26adc5e4b","product_name":"Mňam dva duo - Vanilka","brand_name":"Rajo","count":1,"price":"0.32"},{"id_product":"01256ec5-8af0-4a7c-a367-8acc01c1184b","product_name":"Mňam dva duo - Čokoláda","brand_name":"Rajo","count":1,"price":"0.43"}]}],"shop_price_total":"0.75"};
-    $scope.obchody = [false, false, false,false];
->>>>>>> origin/master
+	$scope.showResults = false;
+
 
     $scope.$watch('obchody', function(newValue, oldValue){
         console.log(newValue);
@@ -171,14 +168,14 @@ app.controller('filterKat',['$scope','$http', function ($scope,$http) {
 		
 		$http.post("https://bestprice-backend.herokuapp.com/shop",parameter).success(function(response){
 			$scope.vypocetCeny=response;
-			window.location.href='bestprice.html';
-			console.log("vstup je  = " + JSON.stringify(parameter));
+			//window.location.href='bestprice.html';
+			//console.log("vstup je  = " + JSON.stringify(parameter));
 			//console.log("produky su" + JSON.stringify($scope.cart));
-			console.log("vystup je" + JSON.stringify($scope.vypocetCeny));
+			//console.log("vystup je" + JSON.stringify(vypocetCeny));
 			//console.log("produky sa " + JSON.stringify(poleProduktov));
 			//window.alert(response);
 
-		 
+			$scope.showResults = true;
     });  
 	//window.alert("not success");
 		  
