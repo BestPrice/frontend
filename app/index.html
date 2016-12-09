@@ -155,7 +155,7 @@
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav2()">&times;
         </a>
         Maximálny počet obchodov pre nákup produktov:
-        <input type="number" name="pocetObchodov" ng-model="pocetObchodov" min="1" max="4"><br><br>
+        <input type="number" placeholder="1" name="pocetObchodov" ng-model="pocetObchodov" min="1" max="4"><br><br>
 
             <span ng-repeat="category in states2">
                 <label  for="{{category.id_chain_store}}">
@@ -194,9 +194,14 @@
             </td>
 
         </tr>
+		
+		<td> <b> Výsledná suma</b><td>
+		<td></td>
+		<td><b>{{vypocetCeny.shop_price_total}}</b><td>
+		
         </tbody>
     </table>
-	<button type="button" class="btn btn-primary btn-sm" ng-click="prepni()">  SPAT </button>
+	<button type="button" class="btn btn-primary btn-sm" ng-click="prepni()">  Späť </button>
 
         <div id="map"></div>
 <script>

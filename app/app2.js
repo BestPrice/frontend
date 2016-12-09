@@ -72,7 +72,7 @@ app.controller('filterKat',['$scope','$http', function ($scope,$http) {
       
     $scope.cart = [];
     $scope.counter = [];
-    
+    $scope.pocetObchodov = 1;
     
     $scope.addProduct = function(product, quantity){
           
@@ -173,9 +173,9 @@ app.controller('filterKat',['$scope','$http', function ($scope,$http) {
 		$http.post("https://bestprice-backend.herokuapp.com/shop",parameter).success(function(response){
 			$scope.vypocetCeny=response;
 			//window.location.href='bestprice.html';
-			//console.log("vstup je  = " + JSON.stringify(parameter));
+			console.log("vstup je  = " + JSON.stringify(parameter));
 			//console.log("produky su" + JSON.stringify($scope.cart));
-			//console.log("vystup je" + JSON.stringify(vypocetCeny));
+			console.log("vystup je" + JSON.stringify($scope.vypocetCeny));
 			//console.log("produky sa " + JSON.stringify(poleProduktov));
 			//window.alert(response);
 
