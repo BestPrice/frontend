@@ -15,6 +15,14 @@ app.controller('filterKat',['$scope','$http', function ($scope,$http) {
 
     $http.get("https://bestprice-backend.herokuapp.com/stores").success(function(response){
         $scope.stores=response;
+        
+        var store_region = {};
+        
+        response.forEach(function(item){
+            store_region[item.region] = item.region;
+        });
+        
+        $scope.store_region = store_region;
     });
 
 
