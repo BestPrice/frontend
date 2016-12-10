@@ -250,7 +250,7 @@ th {
     border-top-color: #000 !important;
   }
   .label {
-    border: 1px solid #000;
+    border: 1px solid white;
   }
   .table {
     border-collapse: collapse !important;
@@ -1099,6 +1099,7 @@ textarea {
   font-family: inherit;
   font-size: inherit;
   line-height: inherit;
+  color:black;
 }
 a {
   color: #337ab7;
@@ -2505,6 +2506,7 @@ label {
   max-width: 100%;
   margin-bottom: 5px;
   font-weight: bold;
+  color: white;
 }
 input[type="search"] {
   -webkit-box-sizing: border-box;
@@ -4748,7 +4750,7 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
   font-size: 75%;
   font-weight: bold;
   line-height: 1;
-  color: #fff;
+  color: white;
   text-align: center;
   white-space: nowrap;
   vertical-align: baseline;
@@ -4768,7 +4770,7 @@ a.label:focus {
   top: -1px;
 }
 .label-default {
-  background-color: #777;
+  background-color: white;
 }
 .label-default[href]:hover,
 .label-default[href]:focus {

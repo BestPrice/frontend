@@ -15,14 +15,6 @@ app.controller('filterKat',['$scope','$http', function ($scope,$http) {
 
     $http.get("https://bestprice-backend.herokuapp.com/stores").success(function(response){
         $scope.stores=response;
-        
-        var store_region = {};
-        
-        response.forEach(function(item){
-            store_region[item.region] = item.region;
-        });
-        
-        $scope.store_region = store_region;
     });
 
 
@@ -190,12 +182,56 @@ app.controller('filterKat',['$scope','$http', function ($scope,$http) {
 			console.log("vystup je" + JSON.stringify($scope.vypocetCeny));
 			//console.log("produky sa " + JSON.stringify(poleProduktov));
 			//window.alert(response);
+
 			if($scope.vypocetCeny.shop_price_total=="0"){
 				window.alert($scope.vypocetCeny.error);
 				$scope.showResults = false;
 			}
 			else{
 				$scope.showResults = true;
+                var mapOptions = {
+                  enableHighAccuracy: true,
+                  zoom: 12,
+                  center: new google.maps.LatLng(48.152075,17.071535),
+                  mapTypeId: google.maps.MapTypeId.TERRAIN
+              }
+
+              $scope.map = new google.maps.Map(document.getElementById('map'), mapOptions);
+              
+              $scope.markers = [];
+              
+              var infoWindow = new google.maps.InfoWindow();
+
+              var createMarker = function (info){
+                  
+                  var marker = new google.maps.Marker({
+                      map: $scope.map,
+                      position: new google.maps.LatLng(info.latitude, info.longitude),
+                      title: info.city
+                  });
+                  marker.content = '<div class="infoWindowContent">' + info.chain_store_name + '</div>';
+                  
+                  google.maps.event.addListener(marker, 'click', function(){
+                      infoWindow.setContent('<h2>' + marker.title + '</h2>' + marker.content);
+                      infoWindow.open($scope.map, marker);
+                  });
+                  
+                  $scope.markers.push(marker);
+                  
+              }  
+
+                for(var j = 0; j < $scope.vypocetCeny.stores.length; j++){
+                    for (var i = 0; i < $scope.stores.length; i++){
+                        if($scope.stores[i].chain_store_name==$scope.vypocetCeny.stores[j].chain_store_name){
+                            createMarker($scope.stores[i]);
+                        }
+                    }
+                }
+
+                $scope.openInfoWindow = function(e, selectedMarker){
+                  e.preventDefault();
+                  google.maps.event.trigger(selectedMarker, 'click');
+              }
 			}
             console.log($scope.vypocetCeny.shop_price_total);
             $scope.celkovaCena=$scope.vypocetCeny.shop_price_total;

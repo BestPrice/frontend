@@ -48,19 +48,20 @@
     overflow-x: hidden;
     transition: 0.5s;
     padding-top: 60px;
+    color:white;
 }
 
 .sidenav a {
     padding: 8px 8px 8px 32px;
     text-decoration: none;
     font-size: 25px;
-    color: #818181;
+    color: #FFFFFF;
     display: block;
     transition: 0.3s
 }
 
 .sidenav a:hover, .offcanvas a:focus{
-    color: #f1f1f1;
+    color: #FFFFFF;
 }
 
 .sidenav .closebtn {
@@ -80,7 +81,7 @@
 
 .sidenav .cartTable{
     font-size: 15px;
-    color: #818181;
+    color: #FFFFFF;
 }
 
 @media screen and (max-height: 450px) {

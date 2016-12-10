@@ -15,6 +15,10 @@
     <script src="js/bootstrap.js"></script>
     <script src="js/angular.min.js"></script>
     <script src="js/ui-bootstrap-tpls-2.2.0.min.js"></script>
+        <script async defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAtDVriPMdiqDh1czFZRgQ9oK_PSbvF0Zw">
+    </script>
+
     <script src="app2.js"></script>
     <script src="tree-dropdown/tree-dropdown.js"></script>
 
@@ -158,7 +162,7 @@
         <form>
 
         <input type="number" placeholder="1" name="pocetObchodov" ng-model="pocetObchodov" id="pocetO" min="1" max="4"><br><br>
-
+            <h3>Bratislavský kraj</h3>
             <span ng-repeat="category in states2">
                 <label  for="{{category.id_chain_store}}">
                 <input type="checkbox" ng-model="obchody[$index]" id="{{category.id_chain_store}}" />
@@ -168,22 +172,10 @@
         </form>
                 <a href="javascript:void(0)" class="closebtn">
                 </a>
-        
-        <li>
-                        <div class="dropdown">
-                            <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-                                Región
-                            <select class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-                                <option ng-repeat="x in store_region" value="{{x}}">{{x}}</option>
-                            </select>
-                            </button>
-                        </div>
-                    </li>
-        {{grades}}
         </div>
 
 	</div>
-	<div ng-if=showResults>
+	<div ng-show=showResults>
 		<table class="table" ng-repeat="module in vypocetCeny.stores">
         <tbody class="cartTable">
 
@@ -222,48 +214,6 @@
 	<button type="button" class="btn btn-primary btn-sm" ng-click="prepni()">  Späť </button>
 
         <div id="map"></div>
-<script>
-    // Note: This example requires that you consent to location sharing when
-    // prompted by your browser. If you see the error "The Geolocation service
-    // failed.", it means you probably did not give permission for the browser to
-    // locate you.
-    function initMap() {
-        var map = new google.maps.Map(document.getElementById('map'), {
-            center: {lat: 48.147871, lng: 17.107569},
-            zoom: 10
-        });
-        var infoWindow = new google.maps.InfoWindow({map: map});
-
-        // Try HTML5 geolocation.
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(function(position) {
-                var pos = {
-                    lat: position.coords.latitude,
-                    lng: position.coords.longitude
-                };
-
-                infoWindow.setPosition(pos);
-                infoWindow.setContent('Location found.');
-                map.setCenter(pos);
-            }, function() {
-                handleLocationError(true, infoWindow, map.getCenter());
-            });
-        } else {
-            // Browser doesn't support Geolocation
-            handleLocationError(false, infoWindow, map.getCenter());
-        }
-    }
-
-    function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-        infoWindow.setPosition(pos);
-        infoWindow.setContent(browserHasGeolocation ?
-                'Error: The Geolocation service failed.' :
-                'Error: Your browser doesn\'t support geolocation.');
-    }
-</script>
-<script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD1KVK_OBllPwbNrZwPTTmy1Uq7FTGCTAA&callback=initMap">
-</script>
 
 	</div> 
 </div>
