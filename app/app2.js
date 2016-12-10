@@ -137,6 +137,7 @@ app.controller('filterKat',['$scope','$http', function ($scope,$http) {
 		
 	}
 	
+    $scope.celkovaCena=0;
 	$scope.calculatePrice = function(cart){
 	
 		
@@ -166,7 +167,8 @@ app.controller('filterKat',['$scope','$http', function ($scope,$http) {
 		if($scope.pocetObchodov == null){
 			$scope.pocetObchodov=1;
 		}
-		user_preference["max_stores"] = $scope.pocetObchodov;
+        $scope.pocetObchodov=parseInt($('#pocetO')[0].value);		
+        user_preference["max_stores"] = $scope.pocetObchodov;
 		parameter["products"] = poleProduktov;
 		parameter["user_preference"] = user_preference;
 		
@@ -186,6 +188,8 @@ app.controller('filterKat',['$scope','$http', function ($scope,$http) {
 			else{
 				$scope.showResults = true;
 			}
+            console.log($scope.vypocetCeny.shop_price_total);
+            $scope.celkovaCena=$scope.vypocetCeny.shop_price_total;
 			
     });  
 	//window.alert("not success");
