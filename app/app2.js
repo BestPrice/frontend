@@ -172,14 +172,21 @@ app.controller('filterKat',['$scope','$http', function ($scope,$http) {
 		
 		$http.post("https://bestprice-backend.herokuapp.com/shop",parameter).success(function(response){
 			$scope.vypocetCeny=response;
+			
 			//window.location.href='bestprice.html';
 			console.log("vstup je  = " + JSON.stringify(parameter));
 			//console.log("produky su" + JSON.stringify($scope.cart));
 			console.log("vystup je" + JSON.stringify($scope.vypocetCeny));
 			//console.log("produky sa " + JSON.stringify(poleProduktov));
 			//window.alert(response);
-
-			$scope.showResults = true;
+			if($scope.vypocetCeny.shop_price_total=="0"){
+				window.alert($scope.vypocetCeny.error);
+				$scope.showResults = false;
+			}
+			else{
+				$scope.showResults = true;
+			}
+			
     });  
 	//window.alert("not success");
 		  
