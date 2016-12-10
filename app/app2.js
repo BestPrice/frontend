@@ -138,6 +138,7 @@ app.controller('filterKat',['$scope','$http', function ($scope,$http) {
 	}
 	
     $scope.celkovaCena=0;
+	$scope.suma = {};
 	$scope.calculatePrice = function(cart){
 	
 		
@@ -190,6 +191,16 @@ app.controller('filterKat',['$scope','$http', function ($scope,$http) {
 			}
             console.log($scope.vypocetCeny.shop_price_total);
             $scope.celkovaCena=$scope.vypocetCeny.shop_price_total;
+			
+			for(var i = 0; i< $scope.vypocetCeny.stores.length; i++){
+				var tmp = 0;
+				for(var j = 0; j< $scope.vypocetCeny.stores[i].products.length; j++){
+					tmp = tmp + Number($scope.vypocetCeny.stores[i].products[j].price);
+				}
+				$scope.suma[$scope.vypocetCeny.stores[i].chain_store_name] = tmp;
+				//window.alert("suma je" + JSON.stringify($scope.suma));
+			}
+			//window.alert("suma je" + JSON.stringify($scope.suma));
 			
     });  
 	//window.alert("not success");
